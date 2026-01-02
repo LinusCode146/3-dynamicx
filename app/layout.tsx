@@ -27,7 +27,7 @@ export default async function RootLayout({
     <AuthContext>
       <QueryWrapper>
         <HeaderWrapper />
-        {children}
+        <main>{children}</main>
         <Footer />
       </QueryWrapper>
     </AuthContext>

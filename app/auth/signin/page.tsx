@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useState, FormEvent, Suspense } from "react";
 import styles from "./signin.module.css";
+import Link from "next/link";
 
 function SignInForm() {
     const searchParams = useSearchParams();
@@ -157,7 +158,7 @@ function SignInForm() {
 
                         <div className={styles.formFooter}>
                             Noch kein Konto?{" "}
-                            <a href="/auth/register">Jetzt registrieren</a>
+                            <Link href="/auth/register">Jetzt registrieren</Link>
                         </div>
                     </div>
                 </div>

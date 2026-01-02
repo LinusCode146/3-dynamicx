@@ -3,8 +3,9 @@ import gStyles from '../../../public/globalStyles.module.css'
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState, FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 import styles from "./register.module.css";
+import Link from "next/link";
 
 export default function Register() {
     const router = useRouter();
@@ -96,9 +97,9 @@ export default function Register() {
         }
     };
 
-    const handleGoogleSignIn = () => {
+    const handleGoogleSignIn = async () => {
         setIsLoading(true);
-        signIn("google", { callbackUrl: "/" });
+        await signIn("google", { callbackUrl: "/" });
     };
 
     return (
@@ -273,13 +274,13 @@ export default function Register() {
 
                         <p className={styles.terms}>
                             Mit der Registrierung stimmst du unseren{" "}
-                            <a href="/AGB">AGB</a> und{" "}
-                            <a href="/Datenschutz">Datenschutzrichtlinien</a> zu.
+                            <Link href="/rechtliches/AGB">AGB</Link> und{" "}
+                            <Link href="/rechtliches/Datenschutz">Datenschutzrichtlinien</Link> zu.
                         </p>
 
                         <div className={styles.formFooter}>
                             Bereits registriert?{" "}
-                            <a href="/auth/signin">Jetzt anmelden</a>
+                            <Link href="/auth/signin">Jetzt anmelden</Link>
                         </div>
                     </div>
                 </div>

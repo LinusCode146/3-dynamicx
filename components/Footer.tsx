@@ -47,7 +47,7 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/Versand-Lieferung" className={styles.link}>
+                                <Link href="/rechtliches/Versand-Lieferung" className={styles.link}>
                                     Versand & Lieferung
                                 </Link>
                             </li>
@@ -59,22 +59,22 @@ export default function Footer() {
                         <h4 className={styles.sectionTitle}>Rechtliches</h4>
                         <ul className={styles.linkList}>
                             <li>
-                                <Link href="/Impressum" className={styles.link}>
+                                <Link href="/rechtliches/Impressum" className={styles.link}>
                                     Impressum
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/Datenschutz" className={styles.link}>
+                                <Link href="/rechtliches/Datenschutz" className={styles.link}>
                                     Datenschutzerklärung
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/AGB" className={styles.link}>
+                                <Link href="/rechtliches/AGB" className={styles.link}>
                                     AGB
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/Widerrufsbelehrung" className={styles.link}>
+                                <Link href="/rechtliches/Widerrufsbelehrung" className={styles.link}>
                                     Widerrufsbelehrung
                                 </Link>
                             </li>
@@ -89,15 +89,15 @@ export default function Footer() {
                     </p>
 
                     <div className={styles.quickLinks}>
-                        <Link href="/Impressum" className={styles.bottomLink}>
+                        <Link href="/rechtliches/Impressum" className={styles.bottomLink}>
                             Impressum
                         </Link>
                         <span className={styles.separator}>•</span>
-                        <Link href="/Datenschutz" className={styles.bottomLink}>
+                        <Link href="/rechtliches/Datenschutz" className={styles.bottomLink}>
                             Datenschutz
                         </Link>
                         <span className={styles.separator}>•</span>
-                        <Link href="/AGB" className={styles.bottomLink}>
+                        <Link href="/rechtliches/AGB" className={styles.bottomLink}>
                             AGB
                         </Link>
                     </div>

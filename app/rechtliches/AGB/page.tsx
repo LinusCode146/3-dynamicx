@@ -1,5 +1,5 @@
 import styles from './AGB.module.css';
-import gStyles from '../../public/globalStyles.module.css'
+import gStyles from '../../../public/globalStyles.module.css'
 
 
 export default function AGBPage() {
