@@ -1,0 +1,44 @@
+/* Basic Styling */
+
+:root {
+    --stack-spacing1: .5rem;
+    --sidebar-mg: 1.5rem;
+    --switcher-mg: 1.5rem;
+    --primary-btn-bg: #ffffff;
+    --primary-btn-text: #000000;
+    --primary-btn-border: #000000;
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --text-inline-size: 85ch;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary), sans-serif;
+}
+
+body{
+    background: whitesmoke;
+}
+
+button {
+    background: none;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    text-align: inherit;
+    line-height: 1;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    list-style: none;
+}
+

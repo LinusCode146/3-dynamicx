@@ -1,0 +1,356 @@
+.pageContainer {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #ffffff 0%, #f9fafb 100%);
+    padding: 80px 24px 120px;
+}
+
+.contentWrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 60px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.pageTitle {
+    font-size: 42px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.introText {
+    margin-top: 24px;
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-left: 4px solid #0284c7;
+    border-radius: 8px;
+}
+
+.introText .text {
+    margin-bottom: 0;
+    color: #075985;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.section {
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.section:first-of-type {
+    margin-top: 32px;
+    padding-top: 32px;
+}
+
+.sectionTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-left: 16px;
+}
+
+.sectionTitle::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(to bottom, #111827, #4b5563);
+    border-radius: 2px;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #374151;
+    margin-bottom: 16px;
+}
+
+.text:last-child {
+    margin-bottom: 0;
+}
+
+.text strong {
+    color: #111827;
+    font-weight: 600;
+}
+
+/* Highlight Box for Special Information */
+.highlightBox {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 4px solid #f59e0b;
+    padding: 24px 28px;
+    margin: 24px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+}
+
+.highlightBox .text {
+    color: #78350f;
+    margin-bottom: 16px;
+}
+
+.highlightBox .text:last-child {
+    margin-bottom: 0;
+}
+
+.highlightBox .text strong {
+    color: #92400e;
+}
+
+/* Link Styling */
+.link {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.link:hover {
+    color: #1d4ed8;
+    border-bottom-color: #1d4ed8;
+}
+
+/* Contact Section */
+.contactSection {
+    margin-top: 60px;
+    padding-top: 60px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.contactBox {
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contactTitle {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.contactText {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 28px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactButton {
+    display: inline-block;
+    background: white;
+    color: #111827;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.lastUpdated {
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Table of Contents (Optional Enhancement) */
+.tocBox {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 32px 0;
+}
+
+.tocTitle {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.tocList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tocItem {
+    padding: 8px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.tocItem:last-child {
+    border-bottom: none;
+}
+
+.tocLink {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.tocLink:hover {
+    color: #111827;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .pageContainer {
+        padding: 40px 16px 80px;
+    }
+
+    .contentWrapper {
+        padding: 32px 24px;
+        border-radius: 8px;
+    }
+
+    .pageTitle {
+        font-size: 32px;
+    }
+
+    .sectionTitle {
+        font-size: 20px;
+        padding-left: 12px;
+    }
+
+    .sectionTitle::before {
+        height: 20px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .introText {
+        padding: 20px;
+    }
+
+    .highlightBox {
+        padding: 20px;
+    }
+
+    .contactBox {
+        padding: 32px 24px;
+    }
+
+    .section {
+        margin-top: 36px;
+        padding-top: 36px;
+    }
+
+    .contactSection {
+        margin-top: 48px;
+        padding-top: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 28px;
+    }
+
+    .sectionTitle {
+        font-size: 18px;
+    }
+
+    .contactButton {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .pageContainer {
+        background: white;
+        padding: 0;
+    }
+
+    .contentWrapper {
+        box-shadow: none;
+        padding: 20px;
+    }
+
+    .contactBox {
+        display: none;
+    }
+
+    .contactButton {
+        display: none;
+    }
+
+    .link {
+        color: #111827;
+        border-bottom: 1px solid #111827;
+    }
+
+    .introText {
+        background: #f3f4f6;
+        border-left: 4px solid #6b7280;
+    }
+
+    .introText .text {
+        color: #374151;
+    }
+
+    .highlightBox {
+        background: #fef3c7;
+        border-left: 4px solid #f59e0b;
+    }
+
+    .highlightBox .text {
+        color: #78350f;
+    }
+
+    .sectionTitle::before {
+        background: #111827;
+    }
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection Styling */
+::selection {
+    background: #dbeafe;
+    color: #1e3a8a;
+}
+
+::-moz-selection {
+    background: #dbeafe;
+    color: #1e3a8a;
+}

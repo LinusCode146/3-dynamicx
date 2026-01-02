@@ -1,0 +1,283 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    height: 100%;
+    max-width: 15rem !important;
+}
+
+.container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08), 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Container */
+.imgBox {
+    position: relative;
+    width: 100%;
+    height: 18rem;
+    background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+    overflow: hidden;
+}
+
+.imgBox > img {
+    object-fit: cover;
+    object-position: bottom;
+    width: 100%;
+    height: 18rem;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better cropping on mobile */
+@media (max-width: 768px) {
+    .imgBox > img {
+        object-position: center;
+    }
+}
+
+.container:hover .imgBox > img {
+    transform: scale(1.05);
+}
+
+/* Image Overlay */
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.container:hover .imageOverlay {
+    opacity: 1;
+}
+
+.viewDetails {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Content Wrapper */
+.contentWrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+/* Name */
+.nameLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.nameLink:hover .name {
+    color: #374151;
+}
+
+/* Description */
+.description {
+    font-size: 14px;
+    font-weight: 400;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Footer with Price and Icons */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+/* Icons Container */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.iconButton {
+    background: transparent;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1;
+}
+
+.iconButton:hover {
+    background: #f3f4f6;
+    color: #111827;
+    transform: scale(1.1);
+}
+
+.iconButton:active {
+    transform: scale(0.95);
+}
+
+.iconButton svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    vertical-align: middle;
+}
+
+.cartButton:hover {
+    background: #111827;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 0 16px;
+    }
+
+    .imgBox {
+        height: 16rem;
+    }
+
+    .imgBox > img {
+        height: 16rem;
+        object-position: center; /* Center the product on mobile */
+    }
+
+    .contentWrapper {
+        padding: 16px;
+    }
+
+    .name {
+        font-size: 16px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .price {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .imgBox {
+        height: 14rem;
+    }
+
+    .imgBox > img {
+        height: 14rem;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+    .iconButton svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Accessibility */
+.iconButton:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Animation for entrance */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+/* Loading State (optional) */
+.container.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.container.loading .imgBox {
+    background: linear-gradient(
+            90deg,
+            #f3f4f6 25%,
+            #e5e7eb 50%,
+            #f3f4f6 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
