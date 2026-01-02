@@ -10,6 +10,7 @@ import Image from "next/image";
 import {FaMinus, FaPlus, FaTrash} from "react-icons/fa";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function ShoppingCart() {
     const [cartItems, setCartItems] = useState<CartProductData[]>([]);
@@ -99,12 +100,10 @@ export default function ShoppingCart() {
 
     if (isLoading) {
         return (
-            <>
-                <div className={gStyles.filler}></div>
-                <div className={gStyles.center}>
-                    <div className={styles.loading}>Laden...</div>
-                </div>
-            </>
+            <LoadingSpinner
+                size="large"
+                message="Produkte werden geladen..."
+            />
         );
     }
 
