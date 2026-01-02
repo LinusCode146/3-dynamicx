@@ -1,11 +1,9 @@
 import styles from './Versand.module.css';
-import gStyles from '../../../public/globalStyles.module.css'
 
 
 export default function VersandPage() {
     return (
         <>
-            <div className={gStyles.filler}></div>
             <div className={styles.pageContainer}>
                 <div className={styles.contentWrapper}>
                     <h1 className={styles.pageTitle}>Versand & Lieferung</h1>

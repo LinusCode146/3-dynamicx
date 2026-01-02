@@ -101,7 +101,6 @@ export default function ShoppingCart() {
     if (isLoading) {
         return (
             <div className={gStyles.center}>
-                <div className={gStyles.filler}></div>
                 <LoadingSpinner
                     size="large"
                     message="Produkte werden geladen..."
@@ -114,7 +113,6 @@ export default function ShoppingCart() {
     if (error) {
         return (
             <>
-                <div className={gStyles.filler}></div>
                 <div className={gStyles.center}>
                     <div className={styles.error}>Fehler beim Laden des Warenkorbs</div>
                 </div>
@@ -124,7 +122,6 @@ export default function ShoppingCart() {
 
     return (
         <>
-            <div className={gStyles.filler}></div>
             <div className={gStyles.center}>
                 <div className={styles.cartContainer}>
                     <h1 className={styles.title}>Ihr Warenkorb</h1>

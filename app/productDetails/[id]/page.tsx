@@ -60,7 +60,6 @@ export default function ProductDetails() {
 
     return (
         <>
-            <div className={gStyles.filler}></div>
             <div className={styles.container}>
                 <div className={styles.productDetails}>
                     {/* Bild-Bereich */}

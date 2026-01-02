@@ -35,7 +35,6 @@ export default function LikedVases() {
     if (error) {
         return (
             <>
-                <div className={gStyles.filler}></div>
                 <div className={gStyles.center}>
                     <div className={styles.error}>Fehler beim Laden des Warenkorbs</div>
                 </div>

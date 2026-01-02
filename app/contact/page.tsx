@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import styles from './contact.module.css';
-import gStyles from "@/public/globalStyles.module.css";
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -50,7 +49,6 @@ export default function Contact() {
 
     return (
         <>
-            <div className={gStyles.filler}></div>
             <div className={styles.contactWrapper}>
                 <div className={styles.contactContainer}>
                     {/* Header Section */}

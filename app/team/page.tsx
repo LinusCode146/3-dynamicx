@@ -4,7 +4,6 @@ import styles from './team.module.css'
 export default function Team() {
     return (
         <div className={gStyles.center}>
-            <div className={gStyles.filler}></div>
             <div className={gStyles.stackTeam}>
                 <h1 className={styles.mainHeading}>Über 3DynamicX</h1>
 

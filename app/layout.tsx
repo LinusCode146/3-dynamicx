@@ -6,6 +6,7 @@ import AuthContext from "@/components/Auth/AuthContext";
 import HeaderWrapper from "@/components/Layout/HeaderWrapper";
 import QueryWrapper from "@/components/QueryWrapper";
 import Footer from "@/components/Layout/Footer";
+import Filler from "@/components/Filler";
 
 export const metadata: Metadata = {
   title: "3DynamicX",
@@ -27,7 +28,10 @@ export default async function RootLayout({
     <AuthContext>
       <QueryWrapper>
         <HeaderWrapper />
-        <main>{children}</main>
+        <Filler />
+        <main>
+          {children}
+        </main>
         <Footer />
       </QueryWrapper>
     </AuthContext>
