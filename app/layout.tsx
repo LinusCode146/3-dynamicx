@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
 
-import AuthContext from "@/components/AuthContext";
-import HeaderWrapper from "@/components/HeaderWrapper";
+import AuthContext from "@/components/Auth/AuthContext";
+import HeaderWrapper from "@/components/Layout/HeaderWrapper";
 import QueryWrapper from "@/components/QueryWrapper";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: "3DynamicX",

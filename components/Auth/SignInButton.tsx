@@ -1,4 +1,4 @@
-import styles from "@/components/Header.module.css";
+import styles from "@/components/Layout/Header.module.css";
 import {signIn} from "next-auth/react";
 
 export default function SignInButton({ onClose }: { onClose?: () => void }) {

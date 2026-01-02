@@ -1,22 +1,21 @@
 'use client';
 
-import { useParams } from 'next/navigation';
-import {useState, useEffect, useMemo} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import gStyles from "@/public/globalStyles.module.css";
 import styles from './cart.module.css';
 import {CartProductData, productList} from "@/data/vaseInfo";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import axios, {AxiosError} from "axios";
 import Image from "next/image";
-import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import {FaMinus, FaPlus, FaTrash} from "react-icons/fa";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 export default function ShoppingCart() {
-    const params = useParams();
     const [cartItems, setCartItems] = useState<CartProductData[]>([]);
     const [_, setTotal] = useState("");
 
-    const { data, error, isLoading } = useQuery<CartProductData[]>({
+    const {data, error, isLoading} = useQuery<CartProductData[]>({
         queryFn: getUserCartProducts,
         queryKey: ['user-cart'],
     });
@@ -39,7 +38,7 @@ export default function ShoppingCart() {
     }, [cartItems]);
 
     const delMutation = useMutation({
-        mutationFn: (data: {productId: string}) => {
+        mutationFn: (data: { productId: string }) => {
             return axios.delete('/api/cart/deleteUserProduct', {data});
         },
         onSuccess: () => {
@@ -51,7 +50,7 @@ export default function ShoppingCart() {
     })
 
     const updateQuantityMutation = useMutation({
-        mutationFn: (data: {productId: string, quantity: number}) => {
+        mutationFn: (data: { productId: string, quantity: number }) => {
             return axios.put('/api/cart/updateQuantity', data);
         },
         onSuccess: () => {
@@ -62,15 +61,13 @@ export default function ShoppingCart() {
         }
     })
 
-    const userId = params?.userId as string;
-
     const updateQuantity = (productId: string, change: number) => {
         setCartItems(prev =>
             prev.map(item => {
                 if (item.productId === productId) {
                     const newQuantity = Math.max(1, item.quantity + change);
                     updateQuantityMutation.mutate({productId, quantity: newQuantity});
-                    return { ...item, quantity: newQuantity };
+                    return {...item, quantity: newQuantity};
                 }
                 return item;
             })
@@ -128,9 +125,6 @@ export default function ShoppingCart() {
             <div className={gStyles.center}>
                 <div className={styles.cartContainer}>
                     <h1 className={styles.title}>Ihr Warenkorb</h1>
-                    <div className={styles.userInfo}>
-                        Benutzer: {decodeURIComponent(userId)}
-                    </div>
 
                     {cartItems.length === 0 ? (
                         <div className={styles.emptyCart}>
@@ -143,11 +137,11 @@ export default function ShoppingCart() {
                                     <div
                                         key={item.productId}
                                         className={styles.cartItem}
-                                        style={{ animationDelay: `${index * 0.1}s` }}
+                                        style={{animationDelay: `${index * 0.1}s`}}
                                     >
                                         <div className={styles.itemImage}>
                                             <Image
-                                                src={productList[parseInt(item.productId ) - 1].image}
+                                                src={productList[parseInt(item.productId) - 1].image}
                                                 alt={item.name}
                                                 width={100}
                                                 height={100}
@@ -166,14 +160,14 @@ export default function ShoppingCart() {
                                                     onClick={() => updateQuantity(item.productId, -1)}
                                                     className={styles.quantityBtn}
                                                 >
-                                                    <FaMinus />
+                                                    <FaMinus/>
                                                 </button>
                                                 <span className={styles.quantity}>{item.quantity}</span>
                                                 <button
                                                     onClick={() => updateQuantity(item.productId, 1)}
                                                     className={styles.quantityBtn}
                                                 >
-                                                    <FaPlus />
+                                                    <FaPlus/>
                                                 </button>
                                             </div>
 
@@ -186,7 +180,7 @@ export default function ShoppingCart() {
                                                 className={styles.deleteBtn}
                                                 aria-label="Artikel entfernen"
                                             >
-                                                <FaTrash />
+                                                <FaTrash/>
                                             </button>
                                         </div>
                                     </div>
@@ -207,9 +201,11 @@ export default function ShoppingCart() {
                                     <span>{calculateFinalTotal()}€</span>
                                 </div>
 
-                                <button className={styles.checkoutBtn}>
-                                    Zur Kasse gehen
-                                </button>
+                                <Link href={`/checkout`}>
+                                    <button className={styles.checkoutBtn}>
+                                        Zur Kasse gehen
+                                    </button>
+                                </Link>
                             </div>
                         </>
                     )}

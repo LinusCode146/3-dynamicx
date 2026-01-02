@@ -5,10 +5,11 @@ import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
 import styles from "@/app/cart/cart.module.css";
 import {useEffect, useState} from "react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 
 export default function Vases() {
-    const [stockItems, setStockItems] = useState<VaseData[]>();
+    const [stockItems, setStockItems] = useState<VaseData[]>()
 
     const { data, error, isLoading } = useQuery<VaseData[]>({
         queryFn: getStockProducts,
@@ -24,12 +25,10 @@ export default function Vases() {
 
     if (isLoading) {
         return (
-            <>
-                <div className={gStyles.filler}></div>
-                <div className={gStyles.center}>
-                    <div className={styles.loading}>Laden...</div>
-                </div>
-            </>
+            <LoadingSpinner
+                size="large"
+                message="Produkte werden geladen..."
+            />
         );
     }
 
@@ -46,6 +45,8 @@ export default function Vases() {
 
     return (
         <div className={gStyles.grid}>
+            {stockItems?.map((item, index) => <ProductPreview key={index} {...item} />  )}
+            {stockItems?.map((item, index) => <ProductPreview key={index} {...item} />  )}
             {stockItems?.map((item, index) => <ProductPreview key={index} {...item} />  )}
         </div>
     );

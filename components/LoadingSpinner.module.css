@@ -1,0 +1,133 @@
+.spinnerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.spinner {
+    position: relative;
+    display: inline-block;
+}
+
+/* Größen-Varianten */
+.small {
+    width: 30px;
+    height: 30px;
+}
+
+.medium {
+    width: 50px;
+    height: 50px;
+}
+
+.large {
+    width: 80px;
+    height: 80px;
+}
+
+/* Kreise */
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #2c5f2d;
+    animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.small .circle {
+    border-width: 2px;
+}
+
+.large .circle {
+    border-width: 4px;
+}
+
+.circle:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    animation-delay: -0.45s;
+}
+
+.circle:nth-child(2) {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    border-top-color: #4a8f4d;
+    animation-delay: -0.3s;
+}
+
+.circle:nth-child(3) {
+    width: 60%;
+    height: 60%;
+    top: 20%;
+    left: 20%;
+    border-top-color: #6bb06e;
+    animation-delay: -0.15s;
+}
+
+.circle:nth-child(4) {
+    width: 40%;
+    height: 40%;
+    top: 30%;
+    left: 30%;
+    border-top-color: #8dd190;
+    animation-delay: 0s;
+}
+
+/* Spin Animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Loading Message */
+.message {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: #555;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Fullscreen Overlay */
+.fullScreenOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Dark Mode Support (optional) */
+@media (prefers-color-scheme: dark) {
+    .fullScreenOverlay {
+        background: rgba(26, 26, 26, 0.95);
+    }
+
+    .message {
+        color: #ccc;
+    }
+}

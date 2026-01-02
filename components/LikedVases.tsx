@@ -5,6 +5,7 @@ import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
 import styles from "@/app/cart/cart.module.css";
 import {useEffect, useState} from "react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 
 export default function LikedVases() {
@@ -24,12 +25,10 @@ export default function LikedVases() {
 
     if (isLoading) {
         return (
-            <>
-                <div className={gStyles.filler}></div>
-                <div className={gStyles.center}>
-                    <div className={styles.loading}>Laden...</div>
-                </div>
-            </>
+            <LoadingSpinner
+                size="large"
+                message="Produkte werden geladen..."
+            />
         );
     }
 

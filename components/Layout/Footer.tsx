@@ -20,13 +20,8 @@ export default function Footer() {
                         <h4 className={styles.sectionTitle}>Shop</h4>
                         <ul className={styles.linkList}>
                             <li>
-                                <Link href="/" className={styles.link}>
+                                <Link href="/public" className={styles.link}>
                                     Alle Produkte
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/collections" className={styles.link}>
-                                    Kollektionen
                                 </Link>
                             </li>
                         </ul>

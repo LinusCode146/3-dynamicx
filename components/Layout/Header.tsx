@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import styles from './Header.module.css'
-import AuthButtons from "@/components/AuthButtons";
+import AuthButtons from "@/components/Auth/AuthButtons";
 import Image from "next/image";
 
 
