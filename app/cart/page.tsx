@@ -100,10 +100,14 @@ export default function ShoppingCart() {
 
     if (isLoading) {
         return (
-            <LoadingSpinner
-                size="large"
-                message="Produkte werden geladen..."
-            />
+            <div className={gStyles.center}>
+                <div className={gStyles.filler}></div>
+                <LoadingSpinner
+                    size="large"
+                    message="Produkte werden geladen..."
+                />
+            </div>
+
         );
     }
 
