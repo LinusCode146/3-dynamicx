@@ -44,9 +44,6 @@ export default function ProductDetails() {
     }
 
     const handleAddToCart = () => {
-        // Hier kannst du deine Cart-Logik implementieren
-        console.log(`Added ${quantity}x ${product.name} to cart`);
-
         const data: CartProductData = {
             quantity: quantity,
             productId: productId.toString(),

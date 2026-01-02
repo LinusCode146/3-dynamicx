@@ -7,7 +7,7 @@ import AuthButtons from "@/components/AuthButtons";
 import Image from "next/image";
 
 
-export default function Header({userId, image, mail}: {userId: string, image: string | null | undefined, mail: string | null | undefined}) {
+export default function Header({image, mail}: {userId: string, image: string | null | undefined, mail: string | null | undefined}) {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -38,7 +38,7 @@ export default function Header({userId, image, mail}: {userId: string, image: st
                     {/* Right Navigation */}
                     <div className={styles.navRight}>
                         <AuthButtons />
-                        {mail && <Link className={styles.signUp} href={`/userInfo/${userId}`}>Cart</Link>}
+                        {mail && <Link className={styles.signUp} href={`/cart`}>Cart</Link>}
                         {image && <Image  className={styles.cartButton} priority width={16} height={16} src={image} alt={"Profile Pic"} />  }
                     </div>
 
@@ -72,9 +72,9 @@ export default function Header({userId, image, mail}: {userId: string, image: st
                     )}
                     {image && (
                         <>
-                            <li><Link href={`/userInfo/${userId}`} onClick={closeMenu}>Cart</Link></li>
+                            <li><Link href={`/cart`} onClick={closeMenu}>Cart</Link></li>
                             <li>
-                                    <Link href={`/userInfo/${userId}`}>Profile</Link>
+                                    <Link href={`/cart`}>Profile</Link>
                             </li>
                         </>
                     )}

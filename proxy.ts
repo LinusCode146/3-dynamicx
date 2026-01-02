@@ -18,6 +18,7 @@ export async function proxy(request: NextRequest) {
 export const config = {
     matcher: [
         //'/productDetails/:path*',
-        '/userInfo/:path*',
+        '/cart',
+        '/favorites'
     ],
 }

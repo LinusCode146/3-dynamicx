@@ -3,7 +3,7 @@ import ProductPreview from "@/components/ProductPreview";
 import {VaseData} from "@/data/vaseInfo";
 import {useQuery} from "@tanstack/react-query";
 import axios from "axios";
-import styles from "@/app/userInfo/[userId]/userInfo.module.css";
+import styles from "@/app/cart/cart.module.css";
 import {useEffect, useState} from "react";
 
 

@@ -7,8 +7,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    height: 100%;
-    max-width: 15rem !important;
+    padding: 1rem;
 }
 
 .container:hover {
@@ -182,7 +181,8 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .container {
-        margin: 0 16px;
+        margin: 0 2.5rem;
+        object-position: bottom;
     }
 
     .imgBox {

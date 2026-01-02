@@ -3,7 +3,7 @@
 import { useParams } from 'next/navigation';
 import {useState, useEffect, useMemo} from 'react';
 import gStyles from "@/public/globalStyles.module.css";
-import styles from './userInfo.module.css';
+import styles from './cart.module.css';
 import {CartProductData, productList} from "@/data/vaseInfo";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import axios, {AxiosError} from "axios";
