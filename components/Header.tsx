@@ -64,17 +64,16 @@ export default function Header({image, mail}: {userId: string, image: string | n
                     <li><Link href={"/favorites"} onClick={closeMenu}>Favorites</Link></li>
 
                     <li className={styles.divider}></li>
-                    {!mail && (
-                        <>
-                            <li><Link href="/" onClick={closeMenu}>Sign up</Link></li>
-                            <li><Link href="/" onClick={closeMenu}>Sign in</Link></li>
-                        </>
-                    )}
-                    {image && (
+
+                    {!mail ? (
+                        <li>
+                            <AuthButtons onClose={closeMenu} />
+                        </li>
+                    ) : (
                         <>
                             <li><Link href={`/cart`} onClick={closeMenu}>Cart</Link></li>
                             <li>
-                                    <Link href={`/cart`}>Profile</Link>
+                                <AuthButtons onClose={closeMenu} />
                             </li>
                         </>
                     )}

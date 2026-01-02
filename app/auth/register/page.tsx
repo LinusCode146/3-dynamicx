@@ -1,4 +1,5 @@
 "use client";
+import gStyles from '../../../public/globalStyles.module.css'
 
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -107,7 +108,7 @@ export default function Register() {
                 href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;600&display=swap"
                 rel="stylesheet"
             />
-
+            <div className={gStyles.filler}></div>
             <div className={styles.container}>
                 <div className={styles.left}>
                     <div className={styles.brand}>

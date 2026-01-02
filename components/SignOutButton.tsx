@@ -1,9 +1,15 @@
-'use client'
-
 import styles from "@/components/Header.module.css";
 import {signOut} from "next-auth/react";
 
+export default function SignOutButton({ onClose }: { onClose?: () => void }) {
+    const handleSignOut = () => {
+        signOut();
+        onClose?.();
+    };
 
-export default  function SignOutButton() {
-    return <button onClick={() => signOut()} className={styles.signUp}>Sign Out</button>;
+    return (
+        <button onClick={handleSignOut} className={styles.signUp}>
+            Sign Out
+        </button>
+    );
 }

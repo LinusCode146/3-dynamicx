@@ -237,7 +237,8 @@
     border: none;
 }
 
-.sidebarLinks li a {
+.sidebarLinks li a,
+.sidebarLinks li button {
     display: block;
     padding: 1.25rem 2rem;
     color: #1a1a1a;
@@ -245,9 +246,44 @@
     font-size: 1rem;
     font-weight: 500;
     transition: background-color 0.2s ease;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
 }
 
-.sidebarLinks li a:hover {
+.sidebarLinks li a:hover,
+.sidebarLinks li button:hover {
+    background-color: #f5f5f5;
+}
+
+/* Auth Buttons in Sidebar */
+.sidebar .signUp,
+.sidebar .signIn {
+    display: block;
+    padding: 1.25rem 2rem;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.sidebar .signUp::after,
+.sidebar .signIn::after {
+    display: none;
+}
+
+.sidebar .signUp:hover,
+.sidebar .signIn:hover {
     background-color: #f5f5f5;
 }
 
