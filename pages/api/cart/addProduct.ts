@@ -21,14 +21,16 @@ export default async function handler(
 
     if(!prismaUser) return res.status(404).json({ message: "User not found!" });
 
-    const { productId, quantity = 1 } = req.body;
+    const { productId, size, quantity = 1 } = req.body;
 
     if(!productId) return res.status(400).json({ message: "Product ID is required!" });
 
     try {
+        // Suche nach existierendem Produkt mit GLEICHER productId UND size
         const existingProduct = await prisma.product.findFirst({
             where: {
                 productId: productId,
+                size: size,
                 userId: prismaUser.id,
             }
         });
@@ -36,15 +38,18 @@ export default async function handler(
         let result;
 
         if (existingProduct) {
+            // Update: nur nach id filtern, size steht schon fest
             result = await prisma.product.update({
                 where: {
                     id: existingProduct.id,
+                    size: size,
                 },
                 data: {
                     quantity: existingProduct.quantity + quantity,
                 }
             });
         } else {
+            // Neues Produkt mit dieser Größe erstellen
             result = await prisma.product.create({
                 data: {
                     ...req.body,

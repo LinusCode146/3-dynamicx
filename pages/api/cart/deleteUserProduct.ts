@@ -19,7 +19,7 @@ export default async function handler(
         return res.status(405).json({error: "Method not allowed"})
     }
 
-    const { productId } = req.body;
+    const { productId, size } = req.body;
 
     const prismaUser = await prisma.user.findUnique({
         where: { email: session.user.email },
@@ -31,6 +31,7 @@ export default async function handler(
         const result = await prisma.product.deleteMany({
             where: {
                 userId: prismaUser.id,
+                size: size,
                 productId: productId
             }
         })

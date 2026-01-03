@@ -1,34 +1,37 @@
-import type { NextApiRequest, NextApiResponse} from "next";
+import type { NextApiRequest, NextApiResponse } from "next";
 import prisma from '@/lib/prisma';
-import {getServerSession} from "next-auth";
-import {authOptions} from "@/pages/api/auth/[...nextauth]";
+import { validateAndGetUser, validateMethod } from '@/lib/authHelpers';
+
+const sizeOrder = { 'S': 1, 'M': 2, 'L': 3 };
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-    const session = await getServerSession(req, res, authOptions);
+    // Validate method
+    if (!validateMethod(req, res, 'GET')) return;
 
-    if(!session) return res.status(401).json({ message: "Please sign in!" });
-    if(!session.user?.email) return res.status(401).json({ message: "User email not found!" });
-    if(req.method !== 'GET') {
-        return res.status(405).json({error: "Method not allowed"})
-    }
+    // Validate user
+    const user = await validateAndGetUser(req, res);
+    if (!user) return;
 
-    //Get user
-    const prismaUser = await prisma.user.findUnique({
-        where: { email: session.user.email },
-    })
-
-    if(!prismaUser) return res.status(404).json({ message: "User not found!" });
-
-    try{
+    try {
         const data = await prisma.product.findMany({
-            where: {userId: prismaUser.id},
+            where: { userId: user.id },
+            orderBy: { productId: 'asc' }
         });
 
-        res.status(200).json(data);
-    } catch {
-        res.status(403).json({message : "Error fetching products"})
+        // Custom sort by productId, then size (S -> M -> L)
+        const sortedData = data.sort((a, b) => {
+            if (a.productId !== b.productId) {
+                return a.productId.localeCompare(b.productId);
+            }
+            return (sizeOrder[a.size as 'S' | 'M' | 'L'] || 999) - (sizeOrder[b.size as 'S' | 'M' | 'L'] || 999);
+        });
+
+        res.status(200).json(sortedData);
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        res.status(500).json({ message: "Error fetching products" });
     }
 }

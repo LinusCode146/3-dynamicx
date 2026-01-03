@@ -1,6 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
+import {AnimatePresence, motion} from "motion/react"
 import Image from 'next/image';
 import { useState } from 'react';
 import gStyles from "@/public/globalStyles.module.css";
@@ -9,10 +10,28 @@ import {CartProductData, productList, VaseData} from "@/data/vaseInfo";
 import {useMutation} from "@tanstack/react-query";
 import axios, {AxiosError} from "axios";
 import toast from "react-hot-toast";
+import useImageRoller from "@/customHooks/ImageRoller";
+
+// Swipe Animation Varianten
+const swipeVariants = {
+    enter: (direction: string) => ({
+        x: direction === 'right' ? 1000 : -1000,
+        opacity: 0
+    }),
+    center: {
+        x: 0,
+        opacity: 1
+    },
+    exit: (direction: string) => ({
+        x: direction === 'right' ? -1000 : 1000,
+        opacity: 0
+    })
+};
 
 export default function ProductDetails() {
     const params = useParams();
     const [quantity, setQuantity] = useState(1);
+    const [size, setSize] = useState<'S' | 'M' | 'L'>('M');
 
     const createCartProduct = useMutation({
         mutationFn: (data: CartProductData) => {
@@ -26,8 +45,14 @@ export default function ProductDetails() {
         }
     });
 
-    const productId = parseInt(params?.id as string) ;
+    const productId = parseInt(params?.id as string);
     const product: Omit<VaseData, "productId"> = productList[productId - 1];
+
+
+    const images =  [{ src: product.image, alt: product?.name }, { src: '/productImages/blumentopf.jpg', alt: product?.name }];
+    const { currentImage, currentIndex, direction, nextImage, prevImage } = useImageRoller(images);
+
+
 
     if (!product) {
         return (
@@ -49,7 +74,8 @@ export default function ProductDetails() {
             productId: productId.toString(),
             name: product.name,
             price: product.price,
-            description: product.description
+            description: product.description,
+            size: size
         }
 
         createCartProduct.mutate(data);
@@ -65,14 +91,60 @@ export default function ProductDetails() {
                     {/* Bild-Bereich */}
                     <div className={styles.imageSection}>
                         <div className={styles.imageWrapper}>
-                            <Image
-                                src={product.image}
-                                alt={product.name}
-                                sizes="(max-width: 768px) 100vw, 33vw"
-                                fill
-                                className={styles.productImage}
-                                priority
-                            />
+                            <AnimatePresence initial={false} custom={direction}>
+                                <motion.div
+                                    key={currentIndex}
+                                    custom={direction}
+                                    variants={swipeVariants}
+                                    initial="enter"
+                                    animate="center"
+                                    exit="exit"
+                                    transition={{
+                                        x: { type: "spring", stiffness: 300, damping: 30 },
+                                        opacity: { duration: 0.2 }
+                                    }}
+                                    style={{
+                                        position: 'absolute',
+                                        width: '100%',
+                                        height: '100%',
+                                        top: 0,
+                                        left: 0
+                                    }}
+                                >
+                                    <Image
+                                        src={currentImage.src}
+                                        alt={currentImage.alt}
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                        fill
+                                        className={styles.productImage}
+                                        loading="eager"
+                                        priority
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {/* Navigation Buttons (falls mehrere Bilder) */}
+                            {images.length > 1 && (
+                                <>
+                                    <button
+                                        onClick={prevImage}
+                                        className={styles.imageNavBtn}
+                                        aria-label="Vorheriges Bild"
+                                    >
+                                        ‹
+                                    </button>
+                                    <button
+                                        onClick={nextImage}
+                                        className={styles.imageNavBtn}
+                                        aria-label="Nächstes Bild"
+                                    >
+                                        ›
+                                    </button>
+                                    <div className={styles.imageIndicator}>
+                                        {currentIndex + 1} / {images.length}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
 
@@ -93,6 +165,34 @@ export default function ProductDetails() {
                         </div>
 
                         <div className={styles.divider}></div>
+
+                        {/* Größenauswahl */}
+                        <div className={styles.sizeSection}>
+                            <label className={styles.sizeLabel}>Größe:</label>
+                            <div className={styles.sizeOptions}>
+                                <button
+                                    onClick={() => setSize('S')}
+                                    className={`${styles.sizeBtn} ${size === 'S' ? styles.sizeBtnActive : ''}`}
+                                    aria-label="Größe S auswählen"
+                                >
+                                    S
+                                </button>
+                                <button
+                                    onClick={() => setSize('M')}
+                                    className={`${styles.sizeBtn} ${size === 'M' ? styles.sizeBtnActive : ''}`}
+                                    aria-label="Größe M auswählen"
+                                >
+                                    M
+                                </button>
+                                <button
+                                    onClick={() => setSize('L')}
+                                    className={`${styles.sizeBtn} ${size === 'L' ? styles.sizeBtnActive : ''}`}
+                                    aria-label="Größe L auswählen"
+                                >
+                                    L
+                                </button>
+                            </div>
+                        </div>
 
                         {/* Menge und Warenkorb */}
                         <div className={styles.actionSection}>
@@ -136,7 +236,7 @@ export default function ProductDetails() {
                         <div className={styles.additionalInfo}>
                             <div className={styles.infoItem}>
                                 <span className={styles.infoIcon}>✓</span>
-                                <span>3D-Gedruckt - für einen Enkauf von Vasen im Wert von 6€ wird 1€ an <b>The Ocean Cleanup</b> gespendet.</span>
+                                <span>3D-Gedruckt - für einen Einkauf von Vasen im Wert von 6€ wird 1€ an <b>The Ocean Cleanup</b> gespendet.</span>
                             </div>
                             <div className={styles.infoItem}>
                                 <span className={styles.infoIcon}>✓</span>

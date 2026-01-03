@@ -7,11 +7,13 @@ export interface VaseData {
 }
 
 export interface CartProductData {
+    id?: string,
     name: string
     price: string
     description: string
     productId: string
     quantity: number
+    size?: string
 }
 
 export const spiralComfort = {
@@ -40,7 +42,7 @@ export const modernMinimalistic = {
 
 export const earthyGoodness = {
     name: "Earhty Goodness",
-    image: "/productImages/Blumentopf.jpg",
+    image: "/productImages/blumentopf.jpg",
     price: "5€",
     description: "20cm x 20cm",
     productId: "5",

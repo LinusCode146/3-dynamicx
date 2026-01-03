@@ -21,7 +21,7 @@ export default async function handler(
 
     if(!prismaUser) return res.status(404).json({ message: "User not found!" });
 
-    const { productId, quantity } = req.body;
+    const { productId, quantity, size } = req.body;
 
     if(!productId) return res.status(400).json({ message: "Product ID is required!" });
     if(typeof quantity !== 'number' || quantity < 1) return res.status(400).json({ message: "Valid quantity is required!" });
@@ -32,6 +32,7 @@ export default async function handler(
             where: {
                 productId: productId,
                 userId: prismaUser.id,
+                size: size,
             }
         });
 

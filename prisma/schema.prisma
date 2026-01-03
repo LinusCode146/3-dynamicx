@@ -64,6 +64,7 @@ model Product {
   price       String
   quantity    Int
   description String
+  size        String @default("M")
   User        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 

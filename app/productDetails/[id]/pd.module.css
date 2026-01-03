@@ -17,22 +17,6 @@
     top: 100px;
 }
 
-.imageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 3/4;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #f5f5f5;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
-
-.productImage {
-    object-fit: cover;
-    object-position: bottom;
-    transition: transform 0.3s ease;
-}
-
 .imageWrapper:hover .productImage {
     transform: scale(1.05);
 }
@@ -86,6 +70,57 @@
     font-size: 1rem;
     line-height: 1.6;
     color: #555;
+}
+
+/* Größenauswahl */
+.sizeSection {
+    margin-bottom: 2rem;
+}
+
+.sizeLabel {
+    display: block;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.sizeOptions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.sizeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 60px;
+    height: 50px;
+    padding: 0 1rem;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sizeBtn:hover {
+    border-color: #2c5f2d;
+    background: #f9f9f9;
+}
+
+.sizeBtnActive {
+    border-color: #2c5f2d;
+    background: #2c5f2d;
+    color: white;
+}
+
+.sizeBtnActive:hover {
+    background: #234d24;
+    border-color: #234d24;
 }
 
 /* Aktions-Bereich */
@@ -257,4 +292,80 @@
     .addToCartBtn {
         font-size: 1rem;
     }
+
+    .sizeOptions {
+        gap: 0.5rem;
+    }
+
+    .sizeBtn {
+        min-width: 50px;
+        height: 45px;
+    }
+}
+
+/* Füge diese Styles zu deiner pd.module.css hinzu */
+
+.imageNavBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    opacity: .75;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    line-height: 1.5 !important;
+    cursor: pointer;
+    z-index: 10;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+.imageNavBtn:first-of-type {
+    left: 1rem;
+    padding-right: 2px; /* Optische Korrektur für < */
+}
+
+.imageNavBtn:last-of-type {
+    right: 1rem;
+    padding-left: 2px; /* Optische Korrektur für > */
+}
+
+.imageNavBtn:hover {
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.imageIndicator {
+    position: absolute;
+    opacity: .5;
+    bottom: .25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    border-radius: 12px;
+    overflow: hidden; /* Wichtig für die Swipe-Animation */
+    background: #f5f5f5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.productImage {
+    object-fit: cover;
+    object-position: bottom;
 }

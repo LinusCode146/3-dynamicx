@@ -11,6 +11,7 @@ import {FaMinus, FaPlus, FaTrash} from "react-icons/fa";
 import toast from "react-hot-toast";
 import Link from "next/link";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import {AnimatePresence, motion} from "motion/react"
 
 export default function ShoppingCart() {
     const [cartItems, setCartItems] = useState<CartProductData[]>([]);
@@ -23,6 +24,7 @@ export default function ShoppingCart() {
 
     // Initialize cartItems when data is loaded
     useEffect(() => {
+        console.log(data)
         if (data) {
             setCartItems(data);
         }
@@ -39,7 +41,7 @@ export default function ShoppingCart() {
     }, [cartItems]);
 
     const delMutation = useMutation({
-        mutationFn: (data: { productId: string }) => {
+        mutationFn: (data: { productId: string, size: string }) => {
             return axios.delete('/api/cart/deleteUserProduct', {data});
         },
         onSuccess: () => {
@@ -51,7 +53,7 @@ export default function ShoppingCart() {
     })
 
     const updateQuantityMutation = useMutation({
-        mutationFn: (data: { productId: string, quantity: number }) => {
+        mutationFn: (data: { productId: string, quantity: number, size: string }) => {
             return axios.put('/api/cart/updateQuantity', data);
         },
         onSuccess: () => {
@@ -62,12 +64,12 @@ export default function ShoppingCart() {
         }
     })
 
-    const updateQuantity = (productId: string, change: number) => {
+    const updateQuantity = (productId: string, change: number, size: string) => {
         setCartItems(prev =>
             prev.map(item => {
-                if (item.productId === productId) {
+                if (item.productId === productId && item.size === size) {
                     const newQuantity = Math.max(1, item.quantity + change);
-                    updateQuantityMutation.mutate({productId, quantity: newQuantity});
+                    updateQuantityMutation.mutate({productId, quantity: newQuantity, size: size});
                     return {...item, quantity: newQuantity};
                 }
                 return item;
@@ -75,9 +77,9 @@ export default function ShoppingCart() {
         );
     };
 
-    const removeItem = (productId: string) => {
-        setCartItems(prev => prev.filter(item => item.productId !== productId));
-        delMutation.mutate({productId: productId})
+    const removeItem = (productId: string, size: string) => {
+        setCartItems(prev => prev.filter(item => !(item.productId === productId && item.size === size)));
+        delMutation.mutate({productId: productId, size: size})
     };
 
     const calculateTotal = () => {
@@ -121,7 +123,7 @@ export default function ShoppingCart() {
     }
 
     return (
-        <>
+        <AnimatePresence>
             <div className={gStyles.center}>
                 <div className={styles.cartContainer}>
                     <h1 className={styles.title}>Ihr Warenkorb</h1>
@@ -134,10 +136,13 @@ export default function ShoppingCart() {
                         <>
                             <div className={styles.cartItems}>
                                 {cartItems.map((item, index) => (
-                                    <div
-                                        key={item.productId}
+                                    <motion.div
+                                        key={item.id}
                                         className={styles.cartItem}
-                                        style={{animationDelay: `${index * 0.1}s`}}
+                                        //style={{animationDelay: `${index * 0.1}s`}}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        exit={{ opacity: 0 }}
                                     >
                                         <div className={styles.itemImage}>
                                             <Image
@@ -150,21 +155,21 @@ export default function ShoppingCart() {
 
                                         <div className={styles.itemDetails}>
                                             <h3 className={styles.itemName}>{item.name}</h3>
-                                            <p className={styles.itemDescription}>{item.description}</p>
+                                            <p className={styles.itemDescription}>{item.description} - {item.size}</p>
                                             <p className={styles.itemPrice}>{item.price}</p>
                                         </div>
 
                                         <div className={styles.itemControls}>
                                             <div className={styles.quantityControl}>
                                                 <button
-                                                    onClick={() => updateQuantity(item.productId, -1)}
+                                                    onClick={() => updateQuantity(item.productId, -1, item.size as string)}
                                                     className={styles.quantityBtn}
                                                 >
                                                     <FaMinus/>
                                                 </button>
                                                 <span className={styles.quantity}>{item.quantity}</span>
                                                 <button
-                                                    onClick={() => updateQuantity(item.productId, 1)}
+                                                    onClick={() => updateQuantity(item.productId, 1, item.size as string)}
                                                     className={styles.quantityBtn}
                                                 >
                                                     <FaPlus/>
@@ -176,14 +181,14 @@ export default function ShoppingCart() {
                                             </div>
 
                                             <button
-                                                onClick={() => removeItem(item.productId)}
+                                                onClick={() => removeItem(item.productId, item.size as string)}
                                                 className={styles.deleteBtn}
                                                 aria-label="Artikel entfernen"
                                             >
                                                 <FaTrash/>
                                             </button>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 ))}
                             </div>
 
@@ -211,7 +216,7 @@ export default function ShoppingCart() {
                     )}
                 </div>
             </div>
-        </>
+        </AnimatePresence>
     );
 }
 
