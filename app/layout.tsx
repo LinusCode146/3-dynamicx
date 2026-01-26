@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "3DynamicX",
   description: "Online Shop für 3D-gedruckte Vasen",
   icons: {
-    icon: '/logo/logo.png', // Datei liegt dann in public/
+    icon: '/favicon.svg', // Datei liegt dann in public/
   },
 };
 
@@ -24,6 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+
     <body>
     <AuthContext>
       <QueryWrapper>
