@@ -50,7 +50,7 @@ export default async function handler(
                     images: item.image ? [item.image] : [],
                 },
                 //unit_amount: Math.round(parseFloat(item.price.replace('€', '')) * 100),
-                unit_amount: 50,
+                unit_amount: 2,
             },
             quantity: item.quantity,
         }));

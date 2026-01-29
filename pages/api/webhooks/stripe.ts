@@ -37,7 +37,7 @@ async function sendPurchaseConfirmation(
             <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${p.name}</td>
             <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${p.size}</td>
             <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${p.quantity}</td>
-            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">€${p.price}</td>
+            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${p.price}</td>
         </tr>
     `
         )
