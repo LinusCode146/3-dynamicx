@@ -108,6 +108,7 @@ export default function ShoppingCart() {
         try {
             // Produktdaten für Stripe vorbereiten
             const checkoutItems = cartItems.map(item => ({
+                id: item.id,
                 productId: item.productId,
                 name: item.name,
                 description: item.description,
