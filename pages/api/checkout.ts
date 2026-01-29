@@ -85,7 +85,7 @@ export default async function handler(
             metadata: {
                 userId: user.id,
                 versand: versand,
-                cartProductIds: items.map((p: Partial<CartProductData>) => p.productId).join(','), // Pass product IDs
+                cartProductIds: items.map((p: Partial<CartProductData>) => p.id).join(','), // Pass product IDs
             },
         });
 
