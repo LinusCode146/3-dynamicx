@@ -58,17 +58,15 @@ model VerificationToken {
 }
 
 model Product {
-  id          String    @id @default(cuid())
+  id          String @id @default(cuid())
   productId   String
   userId      String
   name        String
   price       String
   quantity    Int
   description String
-  size        String    @default("M")
-  User        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  purchase    Purchase? @relation(fields: [purchaseId], references: [id])
-  purchaseId  String?
+  size        String @default("M")
+  User        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Heart {
@@ -88,10 +86,9 @@ model Stockproduct {
 }
 
 model Purchase {
-  id         String    @id @default(cuid())
+  id         String   @id @default(cuid())
   userId     String
   productIds String[] // Store as array of productIds
   versand    String
-  User       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  products   Product[]
+  User       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
