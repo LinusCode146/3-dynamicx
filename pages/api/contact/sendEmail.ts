@@ -70,7 +70,7 @@ export default async function handler(
                 <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
                     <h2 style="color: #667eea;">Thank You for Reaching Out!</h2>
                     <p>Hi ${name},</p>
-                    <p>We've received your message and will get back to you within 24 hours.</p>
+                    <p>We've received your message and will get back to you as soon as possible.</p>
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
                         <h3 style="color: #334155;">Your Message:</h3>
                         <p><strong>Subject:</strong> ${subject}</p>

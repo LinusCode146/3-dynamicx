@@ -26,7 +26,7 @@ export default function WiderrufsbelehrungPage() {
                                 61440 Oberursel Hessen<br />
                                 Am Müllerweg 11, <br />
                                 E-Mail: threedynamicx@gmail.com <br />
-                                Telefon: +49 176 55249499
+                                Telefon: 0176 55249499
                             </p>
                         </div>
                         <p className={styles.text}>

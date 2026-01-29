@@ -36,9 +36,9 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   password      String?
   emailVerified DateTime?
   image         String?
@@ -46,6 +46,7 @@ model User {
   sessions      Session[]
   cart          Product[]
   Heart         Heart[]
+  purchases     Purchase[]
 }
 
 model VerificationToken {
@@ -57,15 +58,17 @@ model VerificationToken {
 }
 
 model Product {
-  id          String @id @default(cuid())
+  id          String    @id @default(cuid())
   productId   String
   userId      String
   name        String
   price       String
   quantity    Int
   description String
-  size        String @default("M")
-  User        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  size        String    @default("M")
+  User        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  purchase    Purchase? @relation(fields: [purchaseId], references: [id])
+  purchaseId  String?
 }
 
 model Heart {
@@ -82,4 +85,12 @@ model Stockproduct {
   price       String
   description String
   image       String
+}
+
+model Purchase {
+  id       String    @id @default(cuid())
+  userId   String
+  products Product[]
+  versand  String
+  User     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

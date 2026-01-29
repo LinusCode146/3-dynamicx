@@ -316,22 +316,6 @@ export default function VersandPage() {
                     </section>
 
                     <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>8. Individualisierte Produkte</h2>
-                        <div className={styles.customBox}>
-                            <h3 className={styles.customTitle}>Besondere Hinweise für personalisierte Artikel</h3>
-                            <p className={styles.text}>
-                                Da wir viele unserer Produkte individuell für Sie 3D-drucken, kann die Produktionszeit bei
-                                personalisierten oder nach Kundenwunsch gefertigten Artikeln länger sein. Die voraussichtliche
-                                Lieferzeit wird Ihnen vor der Bestellung angezeigt.
-                            </p>
-                            <p className={styles.text}>
-                                <strong>Wichtig:</strong> Für individualisierte Produkte besteht kein Widerrufsrecht gemäß
-                                § 312g Abs. 2 Nr. 1 BGB.
-                            </p>
-                        </div>
-                    </section>
-
-                    <section className={styles.section}>
                         <h2 className={styles.sectionTitle}>9. Zollbestimmungen (Schweiz & Nicht-EU-Länder)</h2>
                         <p className={styles.text}>
                             Bei Lieferungen in die Schweiz oder andere Nicht-EU-Länder können Zollgebühren und

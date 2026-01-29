@@ -1,6 +1,8 @@
 'use client';
 
 import {useEffect, useMemo, useState} from 'react';
+// loadStripe wird nicht mehr benötigt!
+// import {loadStripe} from '@stripe/stripe-js';
 import gStyles from "@/public/globalStyles.module.css";
 import styles from './cart.module.css';
 import {CartProductData, productList} from "@/data/vaseInfo";
@@ -16,13 +18,13 @@ import {AnimatePresence, motion} from "motion/react"
 export default function ShoppingCart() {
     const [cartItems, setCartItems] = useState<CartProductData[]>([]);
     const [_, setTotal] = useState("");
+    const [isCheckoutLoading, setIsCheckoutLoading] = useState(false);
 
     const {data, error, isLoading} = useQuery<CartProductData[]>({
         queryFn: getUserCartProducts,
         queryKey: ['user-cart'],
     });
 
-    // Initialize cartItems when data is loaded
     useEffect(() => {
         console.log(data)
         if (data) {
@@ -31,7 +33,6 @@ export default function ShoppingCart() {
     }, [data]);
 
     useMemo(() => {
-        // eslint-disable-next-line react-hooks/set-state-in-render
         setTotal(() => {
             return cartItems.reduce((total, item) => {
                 const price = parseFloat(item.price.replace('€', ''));
@@ -100,6 +101,49 @@ export default function ShoppingCart() {
         return (subtotal + shipping).toFixed(2);
     };
 
+    // Moderne Checkout-Funktion
+    const handleCheckout = async () => {
+        setIsCheckoutLoading(true);
+
+        try {
+            // Produktdaten für Stripe vorbereiten
+            const checkoutItems = cartItems.map(item => ({
+                productId: item.productId,
+                name: item.name,
+                description: item.description,
+                size: item.size,
+                price: item.price,
+                quantity: item.quantity,
+                image: `${window.location.origin}${productList[parseInt(item.productId) - 1].image}`,
+            }));
+
+            // Checkout Session vom Backend erstellen
+            const response = await axios.post('/api/checkout', {
+                items: checkoutItems,
+            });
+
+            const { url } = response.data;
+
+            if (!url) {
+                toast.error('Fehler beim Erstellen der Checkout-Session');
+                return;
+            }
+
+            // Direkte Weiterleitung zur Stripe Checkout-Seite
+            window.location.href = url;
+
+        } catch (error) {
+            console.error('Checkout error:', error);
+            if (axios.isAxiosError(error)) {
+                toast.error(error.response?.data?.error || 'Fehler beim Checkout');
+            } else {
+                toast.error('Fehler beim Checkout');
+            }
+            setIsCheckoutLoading(false);
+        }
+        // Loading bleibt true während der Weiterleitung
+    };
+
     if (isLoading) {
         return (
             <div className={gStyles.center}>
@@ -108,7 +152,6 @@ export default function ShoppingCart() {
                     message="Produkte werden geladen..."
                 />
             </div>
-
         );
     }
 
@@ -139,7 +182,6 @@ export default function ShoppingCart() {
                                     <motion.div
                                         key={item.id}
                                         className={styles.cartItem}
-                                        //style={{animationDelay: `${index * 0.1}s`}}
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
@@ -206,11 +248,13 @@ export default function ShoppingCart() {
                                     <span>{calculateFinalTotal()}€</span>
                                 </div>
 
-                                <Link href={`/checkout`}>
-                                    <button className={styles.checkoutBtn}>
-                                        Zur Kasse gehen
-                                    </button>
-                                </Link>
+                                <button
+                                    onClick={handleCheckout}
+                                    className={styles.checkoutBtn}
+                                    disabled={isCheckoutLoading}
+                                >
+                                    {isCheckoutLoading ? 'Weiterleitung zu Stripe...' : 'Zur Kasse gehen'}
+                                </button>
                             </div>
                         </>
                     )}

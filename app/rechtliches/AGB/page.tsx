@@ -18,8 +18,7 @@ export default function AGBPage() {
                     <section className={styles.section}>
                         <h2 className={styles.sectionTitle}>1. Geltungsbereich</h2>
                         <p className={styles.text}>
-                            1.1 Diese Allgemeinen Geschäftsbedingungen (nachfolgend &#34;AGB&#34;) der 3DynamicX, [Ihre vollständige
-                            Adresse] (nachfolgend &#34;Verkäufer&#34;), gelten für alle Verträge über die Lieferung von Waren, die ein
+                            1.1 Diese Allgemeinen Geschäftsbedingungen (nachfolgend &#34;AGB&#34;) der 3DynamicX, Am M&uuml;llerweg 11 (nachfolgend &#34;Verkäufer&#34;), gelten für alle Verträge über die Lieferung von Waren, die ein
                             Verbraucher oder Unternehmer (nachfolgend &#34;bundle&#34;) mit dem Verkäufer hinsichtlich der im Online-Shop
                             des Verkäufers dargestellten Waren abschließt.
                         </p>
@@ -203,23 +202,6 @@ export default function AGBPage() {
                         </p>
                     </section>
 
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>9. Besondere Hinweise für individualisierte Produkte</h2>
-                        <div className={styles.highlightBox}>
-                            <p className={styles.text}>
-                                9.1 Bei 3DynamicX bieten wir auch die Möglichkeit, Produkte nach Ihren individuellen Wünschen
-                                anzufertigen. Bitte beachten Sie: Für individuell gestaltete oder nach Kundenspezifikation
-                                gefertigte Produkte besteht gemäß § 312g Abs. 2 Nr. 1 BGB kein Widerrufsrecht.
-                            </p>
-                            <p className={styles.text}>
-                                9.2 Die Anfertigung individualisierter Produkte erfolgt erst nach Zahlungseingang.
-                            </p>
-                            <p className={styles.text}>
-                                9.3 Die Lieferzeit für individualisierte Produkte kann von der Standard-Lieferzeit abweichen.
-                                Sie wird Ihnen vor Vertragsabschluss mitgeteilt.
-                            </p>
-                        </div>
-                    </section>
 
                     <section className={styles.section}>
                         <h2 className={styles.sectionTitle}>10. Urheberrecht</h2>

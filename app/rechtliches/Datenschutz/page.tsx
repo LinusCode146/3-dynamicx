@@ -22,28 +22,20 @@ export default function DatenschutzPage() {
                             </p>
                             <p className={styles.text}>
                                 <strong>3DynamicX</strong><br />
-                                [Vorname Nachname / Firmenname]<br />
-                                [Straße und Hausnummer]<br />
-                                [PLZ und Ort]<br />
+                                Finn Schulze / 3DynamicX<br />
+                                Am M&uuml;llerweg 11<br />
+                                61440 Oberursel<br />
                                 Deutschland
                             </p>
                             <p className={styles.text}>
                                 <strong>Kontakt:</strong><br />
-                                Telefon: [Ihre Telefonnummer]<br />
-                                E-Mail: [Ihre E-Mail-Adresse]
+                                Telefon: 0176 55249499<br />
+                                E-Mail: threedynamicx@gmail.com
                             </p>
                         </div>
                         <p className={styles.text}>
                             Der Verantwortliche ist die natürliche oder juristische Person, die allein oder gemeinsam mit
                             anderen über die Zwecke und Mittel der Verarbeitung von personenbezogenen Daten entscheidet.
-                        </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>2. Datenschutzbeauftragter</h2>
-                        <p className={styles.text}>
-                            [Falls Sie einen Datenschutzbeauftragten bestellt haben, fügen Sie hier die Kontaktdaten ein.
-                            Für kleine Unternehmen ist dies meist nicht erforderlich.]
                         </p>
                     </section>
 
@@ -232,12 +224,13 @@ export default function DatenschutzPage() {
 
                         <h3 className={styles.subTitle}>8.2 Stripe</h3>
                         <p className={styles.text}>
-                            [Falls Sie Stripe nutzen, fügen Sie entsprechende Informationen hinzu]
-                        </p>
-
-                        <h3 className={styles.subTitle}>8.3 Klarna</h3>
-                        <p className={styles.text}>
-                            [Falls Sie Klarna nutzen, fügen Sie entsprechende Informationen hinzu]
+                            Details entnehmen Sie der Datenschutzerklärung von Stripe:
+                            <a target="_blank"
+                               rel="noopener noreferrer"
+                               className={styles.link}
+                               href={"https://stripe.com/de/privacy"}>
+                                https://stripe.com/de/privacy
+                            </a>
                         </p>
                     </section>
 
@@ -284,91 +277,6 @@ export default function DatenschutzPage() {
                             berechtigtes Interesse an der Speicherung von Cookies zur technisch fehlerfreien und reibungslosen
                             Bereitstellung unserer Dienste.
                         </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>11. Analyse-Tools und Werbung</h2>
-
-                        <h3 className={styles.subTitle}>11.1 Google Analytics</h3>
-                        <p className={styles.text}>
-                            [Falls Sie Google Analytics verwenden, fügen Sie hier die entsprechenden Informationen ein,
-                            einschließlich Widerspruchsmöglichkeit und Opt-Out-Link]
-                        </p>
-
-                        <h3 className={styles.subTitle}>11.2 Social Media</h3>
-                        <p className={styles.text}>
-                            [Falls Sie Social Media Plugins verwenden (z.B. Facebook, Instagram), fügen Sie hier die
-                            entsprechenden Informationen ein]
-                        </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>12. Newsletter</h2>
-                        <p className={styles.text}>
-                            Wenn Sie den auf der Website angebotenen Newsletter beziehen möchten, benötigen wir von Ihnen eine
-                            E-Mail-Adresse sowie Informationen, welche uns die Überprüfung gestatten, dass Sie der Inhaber der
-                            angegebenen E-Mail-Adresse sind und mit dem Empfang des Newsletters einverstanden sind.
-                        </p>
-                        <p className={styles.text}>
-                            Weitere Daten werden nicht bzw. nur auf freiwilliger Basis erhoben. Diese Daten verwenden wir
-                            ausschließlich für den Versand der angeforderten Informationen und geben diese nicht an Dritte weiter.
-                        </p>
-                        <p className={styles.text}>
-                            Die Verarbeitung der in das Newsletteranmeldeformular eingegebenen Daten erfolgt ausschließlich auf
-                            Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Die erteilte Einwilligung zur Speicherung
-                            der Daten, der E-Mail-Adresse sowie deren Nutzung zum Versand des Newsletters können Sie jederzeit
-                            widerrufen, etwa über den "Austragen"-Link im Newsletter.
-                        </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>13. Plugins und Tools</h2>
-
-                        <h3 className={styles.subTitle}>13.1 Google Fonts</h3>
-                        <p className={styles.text}>
-                            [Falls Sie Google Fonts verwenden, beschreiben Sie dies hier]
-                        </p>
-
-                        <h3 className={styles.subTitle}>13.2 Google Maps</h3>
-                        <p className={styles.text}>
-                            [Falls Sie Google Maps verwenden, beschreiben Sie dies hier]
-                        </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>14. SSL- bzw. TLS-Verschlüsselung</h2>
-                        <p className={styles.text}>
-                            Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie
-                            zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL- bzw.
-                            TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des
-                            Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
-                        </p>
-                        <p className={styles.text}>
-                            Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln,
-                            nicht von Dritten mitgelesen werden.
-                        </p>
-                    </section>
-
-                    <section className={styles.section}>
-                        <h2 className={styles.sectionTitle}>15. Widerspruch gegen Werbe-E-Mails</h2>
-                        <p className={styles.text}>
-                            Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten zur Übersendung von
-                            nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit widersprochen.
-                            Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten
-                            Zusendung von Werbeinformationen, etwa durch Spam-E-Mails, vor.
-                        </p>
-                    </section>
-
-                    <section className={styles.highlightSection}>
-                        <div className={styles.highlightBox}>
-                            <h3 className={styles.highlightTitle}>Änderung der Datenschutzerklärung</h3>
-                            <p className={styles.highlightText}>
-                                Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen
-                                rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der
-                                Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue
-                                Datenschutzerklärung.
-                            </p>
-                        </div>
                     </section>
 
                     <section className={styles.contactSection}>
