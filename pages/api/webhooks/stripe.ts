@@ -179,9 +179,9 @@ export default async function handler(
                 console.log("userId", userId);
 
                 // Get cart products
-                const cartProducts = await prisma.product.findMany({
+                const cartProducts = await prisma.stockproduct.findMany({
                     where: {
-                        id: { in: cartProductIds },
+                        productId: { in: cartProductIds },
                     },
                 });
 
