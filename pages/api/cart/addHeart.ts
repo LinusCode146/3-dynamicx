@@ -27,6 +27,7 @@ export default async function handler(
     if(!productId) return res.status(400).json({ message: "Product ID is required!" });
 
     try {
+        console.log("Added Heart");
         // Check if heart already exists
         const existingHeart = await prisma.heart.findFirst({
             where: {

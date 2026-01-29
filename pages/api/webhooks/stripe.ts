@@ -109,6 +109,26 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+    console.log('🔔 WEBHOOK ENDPOINT HIT - Method:', req.method);
+    console.log('🔔 Headers:', req.headers);
+
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    // Check if env variables exist
+    if (!process.env.STRIPE_SECRET_KEY) {
+        console.error('❌ STRIPE_SECRET_KEY not set');
+        return res.status(500).json({ error: 'Stripe key not configured' });
+    }
+
+    if (!process.env.STRIPE_WEBHOOK_SECRET) {
+        console.error('❌ STRIPE_WEBHOOK_SECRET not set');
+        return res.status(500).json({ error: 'Webhook secret not configured' });
+    }
+
+    console.log('✅ Environment variables present');
+
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -133,7 +153,6 @@ export default async function handler(
             console.log('Payment successful:', session.id);
 
             try {
-                // Retrieve session metadata (you need to pass userId, productIds, versand in metadata)
                 const metadata = session.metadata;
 
                 if (!metadata?.userId) {
