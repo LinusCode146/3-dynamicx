@@ -195,12 +195,7 @@ export default async function handler(
                     data: {
                         userId: userId,
                         versand: versand,
-                        products: {
-                            connect: cartProductIds.map((id) => ({ id })),
-                        },
-                    },
-                    include: {
-                        products: true,
+                        productIds: cartProductIds, // Just store the array directly
                     },
                 });
 

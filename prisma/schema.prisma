@@ -88,9 +88,10 @@ model Stockproduct {
 }
 
 model Purchase {
-  id       String    @id @default(cuid())
-  userId   String
-  products Product[]
-  versand  String
-  User     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id         String    @id @default(cuid())
+  userId     String
+  productIds String[] // Store as array of productIds
+  versand    String
+  User       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products   Product[]
 }
